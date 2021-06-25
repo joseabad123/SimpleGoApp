@@ -1,14 +1,9 @@
-FROM golang:latest
+FROM golang:1.14-alpine
 
-RUN mkdir /build
-WORKDIR /build
+WORKDIR /go/src/app
+COPY . .
 
-RUN export GO111MODULE=on 
-RUN go get github.com/joseabad123/SimpleGoApp/src
-RUN cd /build && git clone https://github.com/joseabad123/SimpleGoApp.git
+RUN go get -d -v ./...
+RUN go install -v ./...
 
-RUN cd /build/SimpleGoApp/src && go build
-
-EXPOSE 5656
-
-ENTRYPOINT [ "/build/SimpleGoApp/src/main" ]
+CMD ["app"]
