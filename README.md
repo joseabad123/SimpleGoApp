@@ -11,5 +11,5 @@ Para descargar la imagen
 Para ejecutar
 
 ```
- docker run -p 8081:8081 -d jqwerty/go-app:v1 }}
+ docker run -p 8081:8081 -d jqwerty/go-app:v1
 ```
